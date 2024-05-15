@@ -1,0 +1,55 @@
+// script.js
+async function signup() {
+    const username = document.getElementById('signupUsername').value;
+    const password = document.getElementById('signupPassword').value;
+    const response = await fetch('http://localhost:4000/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    });
+    if (response.ok) {
+      alert('Signup successful');
+    } else {
+      const errorMessage = await response.text();
+      alert(errorMessage);
+    }
+  }
+  
+  async function login() {
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+    const response = await fetch('http://localhost:4000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    });
+    if (response.ok) {
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('timetable').style.display = 'block';
+    } else {
+      const errorMessage = await response.text();
+      alert(errorMessage);
+    }
+  }
+  
+  async function getTimetable() {
+    const subject = document.getElementById('subjectSelect').value;
+    const response = await fetch(`http://localhost:4000/timetable/${subject}`);
+    if (response.ok) {
+      const timetableData = await response.json();
+      const timetableDiv = document.getElementById('timetableData');
+      timetableDiv.innerHTML = '';
+      timetableData.forEach(entry => {
+        timetableDiv.innerHTML += `<p>${entry.day}: ${entry.time} - ${entry.subject}</p>`;
+      });
+    } else {
+      const errorMessage = await response.text();
+      alert(errorMessage);
+    }
+  }
+  
