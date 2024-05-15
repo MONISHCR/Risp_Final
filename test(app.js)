@@ -1,0 +1,119 @@
+const express = require('express');
+const mysql = require('mysql2');
+const cors = require('cors');
+const bcrypt = require('bcrypt');
+const bodyParser = require('body-parser');
+
+const app = express();
+const port = 4000;
+
+// Middleware
+app.use(cors({
+  origin: 'http://127.0.0.1:5502' // Your frontend URL
+}));
+app.use(bodyParser.json());
+
+// Database connection
+const db = mysql.createConnection({
+  host: '192.168.10.8',
+  port: 3306,
+  user: 'test',
+  password: 'risposta124',
+  database: 'school'
+});
+
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL database:', err.stack);
+    return;
+  }
+  console.log('Connected to MySQL database');
+  
+  // Check if the users table exists, if not, create it
+  db.query(`SHOW TABLES LIKE 'users'`, (err, result) => {
+    if (err) {
+      console.error('Error checking for existing users table:', err);
+      return;
+    }
+    if (result.length === 0) {
+      createUsersTable();
+    }
+  });
+});
+
+// Function to create the users table
+function createUsersTable() {
+  const query = `
+    CREATE TABLE users (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      username VARCHAR(255) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL
+    )
+  `;
+  db.query(query, (err, result) => {
+    if (err) {
+      console.error('Error creating users table:', err);
+      return;
+    }
+    console.log('Users table created');
+  });
+}
+
+// Route to handle user registration (signup)
+app.post('/signup', async (req, res) => {
+  const { username, password } = req.body;
+  // Hash the password
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const query = 'INSERT INTO users (username, password) VALUES (?, ?)';
+  db.query(query, [username, hashedPassword], (err, result) => {
+    if (err) {
+      console.error('Error executing MySQL query:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.status(201).send('User created successfully');
+  });
+});
+
+// Route to handle user login
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  const query = 'SELECT * FROM users WHERE username = ?';
+  db.query(query, [username], async (err, result) => {
+    if (err) {
+      console.error('Error executing MySQL query:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    if (result.length === 0) {
+      res.status(401).send('Invalid username or password');
+      return;
+    }
+    // Check password
+    const user = result[0];
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      res.status(401).send('Invalid username or password');
+      return;
+    }
+    res.status(200).send('Login successful');
+  });
+});
+
+// Route to fetch timetable data of a specific subject
+app.get('/timetable/:subject', (req, res) => {
+  const { subject } = req.params;
+  const query = 'SELECT * FROM timetable WHERE subject = ?';
+  db.query(query, [subject], (err, result) => {
+    if (err) {
+      console.error('Error executing MySQL query:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.json(result);
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
