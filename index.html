@@ -1,0 +1,120 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Class Timetable</h1>
+    <table id="timetable">
+        <thead>
+            <tr>
+                <th>Class Name</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <script>
+        fetch('http://localhost:4000/classes')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('tableBody');
+
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${row.class_name}</td>
+                        <td>${row.subject}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
+
+-->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Timetable</title>
+     <style>
+         table {
+             border-collapse: collapse;
+             width: 100%;
+         }
+         th, td {
+             border: 1px solid black;
+             padding: 8px;
+             text-align: center;
+         }
+         th {
+             background-color: #f2f2f2;
+         }
+     </style>
+ </head>
+ <body>
+     <h1>Timetable</h1>
+     <table id="timetable">
+         <thead>
+             <tr>
+                 <th>Class Name</th>
+                 <th>Monday</th>
+                 <th>Tuesday</th>
+                 <th>Wednesday</th>
+                 <th>Thursday</th>
+                 <th>Friday</th>
+                 <th>Saturday</th>
+             </tr>
+         </thead>
+         <tbody id="tableBody">
+         </tbody>
+     </table>
+ 
+     <script>
+         fetch('http://localhost:4000/timetable')
+             .then(response => response.json())
+             .then(data => {
+                 const tableBody = document.getElementById('tableBody');
+ 
+                 data.forEach(row => {
+                     const tr = document.createElement('tr');
+                     tr.innerHTML = `
+                         <td>${row.class_name}</td>
+                         <td>${row.monday}</td>
+                         <td>${row.tuesday}</td>
+                         <td>${row.wednesday}</td>
+                         <td>${row.thursday}</td>
+                         <td>${row.friday}</td>
+                         <td>${row.saturday}</td>
+                     `;
+                     tableBody.appendChild(tr);
+                 });
+             })
+             .catch(error => console.error('Error fetching data:', error));
+     </script>
+ </body>
+ </html>
+ 
