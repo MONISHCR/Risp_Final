@@ -1,0 +1,88 @@
+// const express = require('express');
+// const mysql = require('mysql2');
+// const cors = require('cors');
+
+// const app = express();
+// const port = 4000;
+
+// const db = mysql.createConnection({
+//   host: '192.168.10.8',
+//   port: 3306,
+//   user: 'test',
+//   password: 'risposta124',
+//   database: 'school'
+// });
+
+// db.connect((err) => {
+//   if (err) {
+//     console.error('Error connecting to MySQL database:', err.stack);
+//     return;
+//   }
+//   console.log('Connected to MySQL database');
+// });
+
+// // Use CORS middleware to allow cross-origin requests
+// app.use(cors({
+//   origin: 'http://127.0.0.1:5502' // Your frontend URL
+// }));
+
+// // Route to fetch all classes and their subjects
+// app.get('/classes', (req, res) => {
+//   const query = 'SELECT class_name, subject FROM classes';
+//   db.query(query, (err, result) => {
+//     if (err) {
+//       console.error('Error executing MySQL query:', err);
+//       res.status(500).send('Internal Server Error');
+//       return;
+//     }
+//     res.json(result);
+//   });
+// });
+
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
+const express = require('express');
+const mysql = require('mysql2');
+const cors = require('cors');
+
+const app = express();
+const port = 4000;
+
+const db = mysql.createConnection({
+  host: '192.168.10.8',
+  port: 3306,
+  user: 'test',
+  password: 'risposta124',
+  database: 'school'
+});
+
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL database:', err.stack);
+    return;
+  }
+  console.log('Connected to MySQL database');
+});
+
+// Use CORS middleware to allow cross-origin requests
+app.use(cors({
+  origin: 'http://127.0.0.1:5502' // Your frontend URL
+}));
+
+// Route to fetch all timetable data
+app.get('/timetable', (req, res) => {
+  const query = 'SELECT * FROM timetable';
+  db.query(query, (err, result) => {
+    if (err) {
+      console.error('Error executing MySQL query:', err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+    res.json(result);
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
