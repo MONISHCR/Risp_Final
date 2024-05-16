@@ -1,0 +1,50 @@
+// Import necessary modules
+const express = require('express');
+const mysql = require('mysql2');
+const cors = require('cors'); // Import CORS module
+
+// Create MySQL connection
+const connection = mysql.createConnection({
+    host: '192.168.10.8',
+    port: 3306,
+    user: 'test',
+    password: 'risposta124',
+    database: 'school'
+});
+
+// Connect to MySQL
+connection.connect(err => {
+    if (err) {
+        console.error('Error connecting to MySQL: ' + err.stack);
+        return;
+    }
+    console.log('Connected to MySQL as id ' + connection.threadId);
+});
+
+// Create Express app
+const app = express();
+
+// Enable CORS for all routes
+app.use(cors({
+    origin: 'http://127.0.0.1:5502' // Your frontend URL
+}));
+
+// Define route to fetch timetable data
+app.get('/timetable/:className/:section', (req, res) => {
+    const { className, section } = req.params;
+    const query = 'SELECT * FROM timetable WHERE class = ? AND section = ?';
+    connection.query(query, [className, section], (err, results) => {
+        if (err) {
+            console.error('Error fetching timetable data: ' + err.stack);
+            res.status(500).json({ error: 'Error fetching timetable data' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+// Start the server
+const port = 3000; // Or any other port you prefer
+app.listen(port, () => {
+    console.log('Server is running on port ' + port);
+});
