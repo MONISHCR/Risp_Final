@@ -44,3 +44,13 @@ VALUES
 (8, 'A', 'Thursday', 'Hindi', 'English', 'Maths', 'CA','Science', 'Social', 'Telugu'),
 (8, 'A', 'Friday', 'English', 'Maths', 'Science', 'HK','Social', 'Telugu', 'Hindi'),
 (8, 'A', 'Saturday', 'Maths', 'Science', 'Social', '30MIN','Telugu', 'Hindi', 'English');
+
+INSERT INTO timetable (class, section, day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+(8, 'B', 'Monday', 'Social', 'Telugu', 'Hindi','LB', 'English', 'Maths', 'Science'),
+(8, 'B', 'Tuesday', 'Telugu', 'Hindi', 'English','UR', 'Maths', 'Science', 'Social'),
+(8, 'B', 'Wednesday', 'Hindi', 'English', 'Maths', 'NE','Science', 'Social', 'Telugu'),
+(8, 'B', 'Thursday', 'English', 'Maths', 'Science', 'CA','Social', 'Telugu', 'Hindi'),
+(8, 'B', 'Friday', 'Maths', 'Science', 'Social','HK', 'Telugu', 'Hindi', 'English'),
+(8, 'B', 'Saturday', 'Science', 'Social', 'Telugu', '30MIN','Hindi', 'English', 'Maths');
+
