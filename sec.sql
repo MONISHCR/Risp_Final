@@ -54,3 +54,42 @@ VALUES
 (8, 'B', 'Friday', 'Maths', 'Science', 'Social','HK', 'Telugu', 'Hindi', 'English'),
 (8, 'B', 'Saturday', 'Science', 'Social', 'Telugu', '30MIN','Hindi', 'English', 'Maths');
 
+INSERT INTO timetable (class, section, day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+(9, 'A', 'Monday', 'Hindi_1', 'English_1', 'Maths_1', 'L B', 'Science_1', 'Social_1', 'Telugu_1'),
+(9, 'A', 'Tuesday', 'English_1', 'Maths_1', 'Hindi_1', 'U R', 'Science_1', 'Social_1', 'Telugu_1'),
+(9, 'A', 'Wednesday', 'Maths_1', 'Science_1', 'Social_1', 'N E', 'Telugu_1', 'Hindi_1', 'English_1'),
+(9, 'A', 'Thursday', 'Science_1', 'Social_1', 'Telugu_1', 'C A', 'Hindi_1', 'English_1', 'Maths_1'),
+(9, 'A', 'Friday', 'Social_1', 'Telugu_1', 'Hindi_1', 'H K', 'English_1', 'Maths_1', 'Science_1'),
+(9, 'A', 'Saturday', 'Telugu_1', 'Hindi_1', 'English_1', '30MIN', 'Maths_1', 'Science_1', 'Social_1');
+
+
+INSERT INTO timetable (class, section, day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+(9, 'B', 'Monday', 'Telugu_1', 'Hindi_1', 'English_1', 'LB', 'Maths_1', 'Science_1', 'Social_1'),
+(9, 'B', 'Tuesday', 'Hindi_1', 'English_1', 'Maths_1', 'UR', 'Science_1', 'Social_1', 'Telugu_1'),
+(9, 'B', 'Wednesday', 'English_1', 'Maths_1', 'Science_1', 'NE', 'Social_1', 'Telugu_1', 'Hindi_1'),
+(9, 'B', 'Thursday', 'Maths_1', 'Science_1', 'Social_1', 'CA', 'Telugu_1', 'Hindi_1', 'English_1'),
+(9, 'B', 'Friday', 'Science_1', 'Social_1', 'Telugu_1', 'HK', 'Hindi_1', 'English_1', 'Maths_1'),
+(9, 'B', 'Saturday', 'Social_1', 'Telugu_1', 'Hindi_1', '30MIN', 'English_1', 'Maths_1', 'Science_1');
+
+INSERT INTO timetable (class, section, day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+(10, 'A', 'Monday', 'English_1', 'Maths_1', 'Science_1',  'LB', 'Social_1', 'Telugu_1', 'Hindi_1'),
+(10, 'A', 'Tuesday', 'Maths_1', 'Science_1', 'Social_1',  'UR', 'Telugu_1', 'Hindi_1', 'English_1'),
+(10, 'A', 'Wednesday', 'Science_1', 'Social_1', 'Telugu_1', 'NE', 'Hindi_1', 'English_1', 'Maths_1'),
+(10, 'A', 'Thursday', 'Social_1', 'Telugu_1', 'Hindi_1', 'CA', 'English_1', 'Maths_1', 'Science_1'),
+(10, 'A', 'Friday', 'Telugu_1', 'Hindi_1', 'English_1',  'HK', 'Maths_1', 'Science_1', 'Social_1'),
+(10, 'A', 'Saturday', 'Hindi_1', 'English_1', 'Maths_1', '30MIN', 'Science_1', 'Social_1', 'Telugu_1');
+
+
+INSERT INTO timetable (class, section, day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+(10, 'B', 'Monday', 'Maths_1', 'Science_1', 'Social_1', 'LB', 'Telugu_1', 'Hindi_1', 'English_1'),
+(10, 'B', 'Tuesday', 'Science_1', 'Social_1', 'Telugu_1', 'UR', 'Hindi_1', 'English_1', 'Maths_1'),
+(10, 'B', 'Wednesday', 'Social_1', 'Telugu_1', 'Hindi_1', 'NE', 'English_1', 'Maths_1', 'Science_1'),
+(10, 'B', 'Thursday', 'Telugu_1', 'Hindi_1', 'English_1', 'CA', 'Maths_1', 'Science_1', 'Social_1'),
+(10, 'B', 'Friday', 'Hindi_1', 'English_1', 'Maths_1', 'LB', 'HK', 'Social_1', 'Telugu_1'),
+(10, 'B', 'Saturday', 'English_1', 'Maths_1', 'Science_1', '30MIN', 'Social_1', 'Telugu_1', 'Hindi_1');
+
+
