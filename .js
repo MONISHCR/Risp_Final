@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TeacherDashboard.css'; // Import CSS file
 
 function TeacherDashboard() {
     const [classValue, setClassValue] = useState('');
