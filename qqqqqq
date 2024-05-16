@@ -1,0 +1,68 @@
+<script>
+        document.getElementById('section-select').addEventListener('change', function() {
+            var classSelect = document.getElementById('class-select');
+            var sectionSelect = document.getElementById('section-select');
+            var timetable = document.getElementById('timetable');
+
+            if (classSelect.value !== "" && sectionSelect.value !== "") {
+                fetch(`http://localhost:3000/timetable/${classSelect.value}/${sectionSelect.value}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    updateTimetable(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching timetable:', error);
+                });
+            } else {
+                timetable.style.display = 'none';
+            }
+        });
+
+        function updateTimetable(timetableData) {
+            var timetableTable = document.createElement('table');
+            var daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+            // Add table header
+            var headerRow = timetableTable.insertRow();
+            ['Weeks', '1st Period', '2nd Period', '3rd Period', 'Lunch', '4th Period', '5th Period', '6th Period'].forEach(headerText => {
+                var th = document.createElement('th');
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+
+            // Add table rows
+            daysOfWeek.forEach(day => {
+                var row = timetableTable.insertRow();
+                row.insertCell().textContent = day;
+                timetableData.forEach(data => {
+                    if (data.day === day) {
+                        row.insertCell().textContent = data.period1;
+                        row.insertCell().textContent = data.period2;
+                        row.insertCell().textContent = data.period3;
+                        row.insertCell().textContent = data.lunch;
+                        row.insertCell().textContent = data.period4;
+                        row.insertCell().textContent = data.period5;
+                        row.insertCell().textContent = data.period6;
+                    }
+                });
+            });
+
+            // Clear existing timetable data
+            timetable.innerHTML = '';
+
+            // Append new table to timetable div
+            timetable.appendChild(timetableTable);
+
+            // Show timetable
+            timetable.style.display = 'block';
+        }
+
+        document.getElementById('logout').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+    </script>
