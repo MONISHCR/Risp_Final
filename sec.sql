@@ -26,3 +26,12 @@ VALUES
 (7, 'A', 'Thursday', 'Social', 'Telugu', 'Hindi', 'CA', 'English', 'Maths', 'Science'),
 (7, 'A', 'Friday', 'Telugu', 'Hindi', 'English',  'HK','Maths', 'Science', 'Social'),
 (7, 'A', 'Saturday', 'Hindi', 'English', 'Maths', '30MIN','Science', 'Social', 'Telugu');
+
+INSERT INTO timetable (class, section, day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+(7, 'B', 'Monday', 'Maths', 'Science', 'Social', 'Telugu', 'Hindi', 'English', ''),
+(7, 'B', 'Tuesday', 'Science', 'Social', 'Telugu', 'Hindi', 'English', 'Maths', ''),
+(7, 'B', 'Wednesday', 'Social', 'Telugu', 'Hindi', 'English', 'Maths', 'Science', ''),
+(7, 'B', 'Thursday', 'Telugu', 'Hindi', 'English', 'Maths', 'Science', 'Social', ''),
+(7, 'B', 'Friday', 'Hindi', 'English', 'Maths', 'Science', 'Social', 'Telugu', ''),
+(7, 'B', 'Saturday', 'English', 'Maths', 'Science', 'Social', 'Telugu', 'Hindi', '');
