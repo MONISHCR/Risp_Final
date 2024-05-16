@@ -1,0 +1,32 @@
+CREATE TABLE timetable (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    class INT,
+    section VARCHAR(1),
+    day VARCHAR(10),
+    period1 VARCHAR(50),
+    period2 VARCHAR(50),
+    period3 VARCHAR(50),
+    lunch VARCHAR(50),
+    period4 VARCHAR(50),
+    period5 VARCHAR(50),
+    period6 VARCHAR(50)
+);
+
+INSERT INTO timetable (class, section, day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+(6, 'A', 'Monday', 'Social', 'English', 'Maths', '', 'Hindi', 'Science', 'Telugu'),
+(6, 'A', 'Tuesday', 'Maths', 'Hindi', 'English', '', 'Science', 'Social', 'Telugu'),
+(6, 'A', 'Wednesday', 'English', 'Maths', 'Hindi', '', 'Science', 'Social', 'Telugu'),
+(6, 'A', 'Thursday', 'Science', 'Maths', 'Social', '', 'English', 'Hindi', 'Telugu'),
+(6, 'A', 'Friday', 'Hindi', 'English', 'Science', '', 'Maths', 'Social', 'Telugu'),
+(6, 'A', 'Saturday', 'Maths', 'Science', 'Hindi', '', 'English', 'Social', 'Telugu');
+
+select * from timetable where class=6 and section='B';
+INSERT INTO timetable (class, section, day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+(6, 'B', 'Monday', 'Geography', 'Physics', 'Chemistry', '', 'Biology', 'Mathematics', 'History'),
+(6, 'B', 'Tuesday', 'Physics', 'Chemistry', 'Biology', '', 'Mathematics', 'History', 'Geography'),
+(6, 'B', 'Wednesday', 'Chemistry', 'Biology', 'Mathematics', '', 'History', 'Geography', 'Physics'),
+(6, 'B', 'Thursday', 'Biology', 'Mathematics', 'History', '', 'Geography', 'Physics', 'Chemistry'),
+(6, 'B', 'Friday', 'Mathematics', 'History', 'Geography', '', 'Physics', 'Chemistry', 'Biology'),
+(6, 'B', 'Saturday', 'History', 'Geography', 'Physics', '', 'Chemistry', 'Biology', 'Mathematics');
