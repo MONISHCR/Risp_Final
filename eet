@@ -1,0 +1,63 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+
+function Teacher() {
+  const [subject, setSubject] = useState('');
+  const [timetable, setTimetable] = useState([]);
+
+  const fetchTimetable = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4000/${subject}`);
+      setTimetable(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <div>
+      <select value={subject} onChange={(e) => setSubject(e.target.value)}>
+        <option value="">Select Subject</option>
+        <option value="english">English</option>
+        <option value="hindi">Hindi</option>
+        <option value="maths">Maths</option>
+        <option value="science">Science</option>
+        <option value="social">Social</option>
+        <option value="telugu">Telugu</option>
+      </select>
+      <button onClick={fetchTimetable}>Fetch Timetable</button>
+      <div>
+        <h2>Timetable</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Day</th>
+              <th>Period1</th>
+              <th>Period2</th>
+              <th>Period3</th>
+              <th>Period4</th>
+              <th>Period5</th>
+              <th>Period6</th>
+            </tr>
+          </thead>
+          <tbody>
+            {timetable.map((item, index) => (
+              <tr key={index}>
+                <td>{item.day}</td>
+                <td>{item.period1}</td>
+                <td>{item.period2}</td>
+                <td>{item.period3}</td>
+                <td>{item.period4}</td>
+                <td>{item.period5}</td>
+                <td>{item.period6}</td>
+
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default Teacher;
