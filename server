@@ -1,0 +1,112 @@
+const express = require('express');
+const mysql = require('mysql2');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { check, validationResult } = require('express-validator');
+
+const app = express();
+const port = 4000;
+
+// Create connection to MySQL
+const connection = mysql.createConnection({
+    host: "192.168.10.8", // or your database host
+    port: 3306,
+    user: "test", // or your database username
+    password: "risposta124", // or your database password
+    database: "Timetable"
+});
+
+// Connect to MySQL
+connection.connect((err) => {
+    if (err) throw err;
+    console.log('Connected to MySQL database');
+});
+
+// Use CORS middleware to allow requests from all origin
+app.use(cors());
+
+// Middleware to parse incoming request bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Register endpoint
+app.post('/register', [
+    check('uname', 'Name is required').notEmpty(),
+    check('password', 'Password is required').notEmpty(),
+    check('email', 'A valid email is required').isEmail(),
+    check('role', 'Role is required').notEmpty()
+], function(req, res) {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const user = {
+        uname: req.body.uname,
+        email: req.body.email,
+        password: req.body.password,
+        role: req.body.role
+    };
+
+    connection.query('INSERT INTO users SET ?', user, function(err, result) {
+        if (err) {
+            console.error('Error registering user:', err);
+            return res.status(500).json({ error: 'Error registering user' });
+        } else {
+            console.log('User registered successfully');
+            return res.status(200).json({ message: 'User registered successfully' });
+        }
+    });
+});
+
+// Login endpoint
+app.post('/login', function(req, res) {
+    const { email, password } = req.body;
+
+    connection.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password], function(err, result) {
+        if (err) {
+            console.error('Error during login:', err);
+            return res.status(500).json({ error: 'Error during login' });
+        }
+
+        if (result.length > 0) {
+            console.log('Login successful');
+            return res.status(200).json({ message: 'Login successful' });
+        } else {
+            console.log('Login failed: Invalid credentials');
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+    });
+});
+
+app.get('/timetable/:className/:section', (req, res) => {
+    const { className, section } = req.params;
+    const query = `SELECT * FROM timetable WHERE class = ? AND section = ?`;
+    connection.query(query, [className, section], (err, results) => {
+        if (err) {
+            console.error('Error fetching timetable data: ' + err.stack);
+            res.status(500).json({ error: 'Error fetching timetable data' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+app.get('/:subject', (req, res) => {
+    const subject= req.params.subject;
+    const query = `SELECT * FROM ${subject}`;
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error('Error fetching timetable data: ' + err.stack);
+            res.status(500).json({ error: 'Error fetching timetable data' });
+            return;
+        }
+        res.json(results);
+    });
+});
+
+// Start the server
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
