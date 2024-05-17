@@ -94,7 +94,7 @@ app.get('/timetable/:className/:section', (req, res) => {
 });
 
 app.get('/:subject', (req, res) => {
-    const subject= req.params.subject;
+    const { subject } = req.params;
     const query = `SELECT * FROM ${subject}`;
     connection.query(query, (err, results) => {
         if (err) {
