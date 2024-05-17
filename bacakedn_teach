@@ -1,0 +1,25 @@
+app.get('/:subject', (req, res) => {
+    const subject = req.params.subject;
+
+    pool.getConnection((err, connection) => {
+        if (err) {
+            console.error('Error connecting to database:', err);
+            res.status(500).json({ error: 'Internal server error' });
+            return;
+        }
+
+        const query = `SELECT * FROM ${subject}`;
+
+        connection.query(query, (error, results) => {
+            connection.release(); // Release the connection back to the pool
+
+            if (error) {
+                console.error('Error querying database:', error);
+                res.status(500).json({ error: 'Internal server error' });
+                return;
+            }
+
+            res.json(results); // Send timetable data as JSON response
+        });
+    });
+});
