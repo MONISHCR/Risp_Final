@@ -91,3 +91,77 @@ VALUES
 ('Friday', '7B', '7A', '6B','H', '6A','8B','8A'),
 ('Saturday',  '7A', '6B', '6A','30MIN','8B','8A','7B');
 
+
+
+
+INSERT INTO telugu_1(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+('Monday', '9A', '-', '-', 'L', '10B', '10A', '9B'),
+('Tuesday', '-', '-', '10B', 'U', '10A', '9B', '9A'),
+('Wednesday', '-', '10B',  '10A','N', '9B', '9A','-'),
+('Thursday', '10B', '10A', '9B','C', '9A','-','-'),
+('Friday',  '10A', '9B', '9A','H','-','-','10B'),
+('Saturday',  '9B', '9A','-','30MIN','-','10B','10A');
+
+
+
+
+INSERT INTO hindi_1(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+('Monday', '-', '-', '10B', 'L', '10A', '9B', '9A'),
+('Tuesday', '-', '10B',  '10A','U', '9B', '9A','-'),
+('Wednesday', '10B', '10A', '9B','N', '9A','-','-'),
+('Thursday',  '10A', '9B', '9A','C','-','-','10B'),
+('Friday',  '9B', '9A','-','H','-','10B','10A'),
+('Saturday', '9A', '-', '-', '30MIN', '10B', '10A', '9B');
+
+
+
+
+
+INSERT INTO english_1(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+
+('Monday', '-', '10B',  '10A','L', '9B', '9A','-'),
+('Tuesday', '10B', '10A', '9B','U', '9A','-','-'),
+('Wednesday',  '10A', '9B', '9A','N','-','-','10B'),
+('Thursday',  '9B', '9A','-','C','-','10B','10A'),
+('Friday', '9A', '-', '-', 'H', '10B', '10A', '9B'),
+('Saturday', '-', '-', '10B', '30MIN', '10A', '9B', '9A');
+
+
+
+INSERT INTO maths_1(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+('Monday', '10B', '10A', '9B','L', '9A','-','-'),
+('Tuesday',  '10A', '9B', '9A','U','-','-','10B'),
+('Wednesday',  '9B', '9A','-','N','-','10B','10A'),
+('Thursday', '9A', '-', '-', 'C', '10B', '10A', '9B'),
+('Friday', '-', '-', '10B', 'H', '10A', '9B', '9A'),
+('Saturday', '-', '10B',  '10A','30MIN', '9B', '9A','-');
+
+
+
+
+INSERT INTO science_1(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+
+('Monday',  '10A', '9B', '9A','L','-','-','10B'),
+('Tuesday',  '9B', '9A','-','U','-','10B','10A'),
+('Wednesday', '9A', '-', '-', 'N', '10B', '10A', '9B'),
+('Thursday', '-', '-', '10B', 'C', '10A', '9B', '9A'),
+('Friday', '-', '10B',  '10A','H', '9B', '9A','-'),
+('Saturday', '10B', '10A', '9B','30MIN', '9A','-','-');
+
+
+
+
+INSERT INTO social_1(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+
+('Monday',  '9B', '9A','-','L','-','10B','10A'),
+('Tuesday', '9A', '-', '-', 'U', '10B', '10A', '9B'),
+('Wednesday', '-', '-', '10B', 'N', '10A', '9B', '9A'),
+('Thursday', '-', '10B',  '10A','C', '9B', '9A','-'),
+('Friday', '10B', '10A', '9B','H', '9A','-','-'),
+('Saturday',  '10A', '9B', '9A','30MIN','-','-','10B');
