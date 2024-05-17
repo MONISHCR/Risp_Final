@@ -23,3 +23,71 @@ VALUES
 
 
 select * from telugu;
+
+
+
+INSERT INTO hindi (day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+('Monday', '8B', '8A', '7B', 'L', '7A', '6B', '6A'),
+('Tuesday', '8A', '7B',  '7A','U', '6B', '6A','8B'),
+('Wednesday', '7B', '7A', '6B','N', '6A','8B','8A'),
+('Thursday',  '7A', '6B', '6A','C','8B','8A','7B'),
+('Friday',  '6B', '6A','8B','H','8A','7B','7A'),
+('Saturday', '6A', '8B', '8A', '30MIN', '7B', '7A', '6B');
+
+
+
+
+
+INSERT INTO english(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+
+('Monday', '8A', '7B',  '7A','L', '6B', '6A','8B'),
+('Tuesday', '7B', '7A', '6B','U', '6A','8B','8A'),
+('Wednesday',  '7A', '6B', '6A','N','8B','8A','7B'),
+('Thursday',  '6B', '6A','8B','C','8A','7B','7A'),
+('Friday', '6A', '8B', '8A', 'H', '7B', '7A', '6B'),
+('Saturday', '8B', '8A', '7B', '30MIN', '7A', '6B', '6A');
+
+
+
+
+INSERT INTO maths(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+
+
+('Monday', '7B', '7A', '6B','L', '6A','8B','8A'),
+('Tuesday',  '7A', '6B', '6A','U','8B','8A','7B'),
+('Wednesday',  '6B', '6A','8B','N','8A','7B','7A'),
+('Thursday', '6A', '8B', '8A', 'C', '7B', '7A', '6B'),
+('Friday', '8B', '8A', '7B', 'H', '7A', '6B', '6A'),
+('Saturday', '8A', '7B',  '7A','30MIN', '6B', '6A','8B');
+
+
+INSERT INTO science(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+
+
+
+('Monday',  '7A', '6B', '6A','L','8B','8A','7B'),
+('Tuesday',  '6B', '6A','8B','U','8A','7B','7A'),
+('Wednesday', '6A', '8B', '8A', 'N', '7B', '7A', '6B'),
+('Thursday', '8B', '8A', '7B', 'C', '7A', '6B', '6A'),
+('Friday', '8A', '7B',  '7A','H', '6B', '6A','8B'),
+('Saturday', '7B', '7A', '6B','30MIN', '6A','8B','8A');
+
+
+
+
+
+INSERT INTO social(day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+
+
+('Monday',  '6B', '6A','8B','L','8A','7B','7A'),
+('Tuesday', '6A', '8B', '8A', 'U', '7B', '7A', '6B'),
+('Wednesday', '8B', '8A', '7B', 'N', '7A', '6B', '6A'),
+('Thursday', '8A', '7B',  '7A','C', '6B', '6A','8B'),
+('Friday', '7B', '7A', '6B','H', '6A','8B','8A'),
+('Saturday',  '7A', '6B', '6A','30MIN','8B','8A','7B');
+
