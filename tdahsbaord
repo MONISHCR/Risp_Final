@@ -38,12 +38,12 @@ function App() {
             <option value="science">Science</option>
             <option value="maths">Maths</option>
             <option value="social">Social</option>
-            <option value="telugu_1">Telugu</option>
-            <option value="english_1">English</option>
-            <option value="hindi_1">Hindi</option>
-            <option value="science_1">Science</option>
-            <option value="maths_1">Maths</option>
-            <option value="social_1">Social</option>
+            <option value="telugu_1">Telugu_1</option>
+            <option value="english_1">English_1</option>
+            <option value="hindi_1">Hindi_1</option>
+            <option value="science_1">Science_1</option>
+            <option value="maths_1">Maths_1</option>
+            <option value="social_1">Social_1</option>
 
           </select>
           <button onClick={fetchTimetable}>Fetch Timetable</button>
