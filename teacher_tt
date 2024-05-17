@@ -1,0 +1,25 @@
+CREATE TABLE telugu (
+    day VARCHAR(20),
+    period1 VARCHAR(50),
+    period2 VARCHAR(50),
+    period3 VARCHAR(50),
+    lunch VARCHAR(50),
+    period4 VARCHAR(50),
+    period5 VARCHAR(50),
+    period6 VARCHAR(50)
+);
+
+
+
+INSERT INTO telugu (day, period1, period2, period3, lunch, period4, period5, period6)
+VALUES
+('Monday', '6A', '8B', '8A', 'L', '7B', '7A', '6B'),
+('Tuesday', '8B', '8A', '7B', 'U', '7A', '6B', '6A'),
+('Wednesday', '8A', '7B',  '7A','N', '6B', '6A','8B'),
+('Thursday', '7B', '7A', '6B','C', '6A','8B','8A'),
+('Friday',  '7A', '6B', '6A','H','8B','8A','7B'),
+('Saturday',  '6B', '6A','8B','30MIN','8A','7B','7A');
+
+
+
+select * from telugu;
